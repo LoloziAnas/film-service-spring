@@ -5,7 +5,7 @@ L'objectif de ce test est d'évaluer votre capacité à développer un service d
 
 Vous pouvez utiliser le framework et les libs de votre choix tant que vous codez en **Java**.
 
-Ce test devrait vous prendre environ 1h30. Passez le temps que vous voulez, n'hésitez pas à ajouter des méthodes vides commentées si vous manquez de temps.
+Ce test devrait vous prendre environ 2h. Passez le temps que vous voulez, n'hésitez pas à ajouter des méthodes vides commentées si vous manquez de temps.
 
 
 ## Créer le service
@@ -34,24 +34,26 @@ Nous souhaitons créer une API RESTFUL qui manipule des films stockés en json d
 ```
 
 Créer les endpoints suivants :
-1. retourner les films d'un réalisateur correspondant à une recherche passée en paramètre (ex : star)
-2. retourner une liste de tous les genres avec 2 films au hasard par genre (aucun paramètre en entrée)
+
+1. poster le fichier `films.json` et stocker les films en mémoire
+2. retourner le nombre de film par genre correspondant à une recherche passée en paramètre (ex : star)
 
 
 ## Industrialiser
 
 Utiliser maintenant l'API [OMDBAPI](https://www.omdbapi.com/) pour les nouveaux endpoints suivants :
-1. retourner les films correspondant à une année et à un nom passé en paramètre
-2. retourner le détail d'un film en utilisant un des `imdbID` renvoyés par l'appel précédent
+
+3. retourner les films correspondant à une année et à un nom passé en paramètre
+4. retourner le détail d'un film en utilisant un `imdbID` passé en paramètre
 
 ## Test
 
-Nous aimerions voir quelques tests unitaires dans le code livré sur le service retournant une liste de tous les genres avec 2 films par genre.
+Nous aimerions voir quelques tests unitaires dans le code correspondant au endpoint 2.
 
 
 ## Livraison
 
 Lorsque votre code est fini, veuillez :
-1. Documenter le déploiement de votre solution dans un markdown nommé DEPLOY.md 
-2. Pousser votre code sur gitlab **XXX**
-3. Envoyer un mail pour nous prévenir que le code est *livré*
+1. Documenter le déploiement de votre solution dans un markdown nommé `DEPLOY.md` 
+2. Pousser votre code sur gitlab.com
+3. Envoyer un mail pour nous prévenir que le code est livré

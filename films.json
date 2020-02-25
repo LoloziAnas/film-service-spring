@@ -59,7 +59,13 @@
             "Year": "2019",
             "Genre": "Reality-TV",
             "Type": "series"
-         }
+         },
+         {
+            "Title": "How to Train Your Dragon: The Hidden World",
+            "Year": "2019",
+            "Genre": "Animation, Action, Adventure, Family, Fantasy",
+            "Type": "movie"
+        }
     ],
-    "total": "10"
+    "total": "11"
 }
