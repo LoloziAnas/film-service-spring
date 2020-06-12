@@ -35,8 +35,8 @@ Nous souhaitons créer une API RESTFUL qui manipule des films stockés en json d
 
 Créer les endpoints suivants :
 
-1. poster le fichier `films.json` et stocker les films en mémoire
-2. retourner le nombre de film par genre correspondant à une recherche passée en paramètre (ex : star)
+1. poster le fichier `films.json` et garder les films en mémoire
+2. retourner le nombre de film par genre correspondant à une recherche sur le nom du film passé en paramètre (ex : star)
 
 
 ## Industrialiser
