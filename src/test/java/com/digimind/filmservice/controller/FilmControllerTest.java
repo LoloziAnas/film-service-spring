@@ -61,8 +61,8 @@ class FilmControllerTest {
         // Arrange
         String genre = "Action";
         List<FilmDto> films = Arrays.asList(
-                new FilmDto("Star Wars: Episode IV - A New Hope", 1977, "Action, Adventure, Fantasy, Sci-Fi", "serie"),
-                new FilmDto("Star Wars: Episode V - The Empire Strikes Back", 1980, "Action, Adventure, Fantasy, Sci-Fi", "movie")
+                new FilmDto("Star Wars: Episode IV - A New Hope", "1977", "Action, Adventure, Fantasy, Sci-Fi", "serie"),
+                new FilmDto("Star Wars: Episode V - The Empire Strikes Back", "1980", "Action, Adventure, Fantasy, Sci-Fi", "movie")
         );
         FilmDtoResponse filmDtoResponse = new FilmDtoResponse();
         filmDtoResponse.setFilms(films);

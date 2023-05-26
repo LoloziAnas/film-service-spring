@@ -80,7 +80,7 @@ GET http://localhost:8081/films/search?year=2022&title=Star
 ```curl
 GET http://localhost:8081/films/tt3896198
 ```
-
+* Ajouter un nouveau film a la base de donnees
 ```curl
 curl -H 'Content-Type: application/json' \
       -d '{"title": "Test","year": 2014,"genre": "Test","type": "Test"}' \
@@ -92,7 +92,7 @@ curl -H 'Content-Type: application/json' \
 Accédez à la documentation swagger a travers le lien suivant
 ```
 http://localhost:8081/swagger-ui/index.html
-localhost:8081/v3/api-docs
+http://localhost:8081/v3/api-docs
 ```
 
 
