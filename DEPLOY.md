@@ -16,7 +16,7 @@ Suivez les étapes ci-dessous pour déployer la solution :
 1- Clonez le dépôt GitLab contenant le code source de la solution.
 
 ```
-git clone <URL_DU_DÉPÔT>
+git clone https://gitlab.com/digimind-public/technical-tests/candidates/anas-lolozi.git
 ```
 
 2- Accédez au répertoire du projet.
@@ -27,7 +27,7 @@ cd film-service
 
 3- Vérifiez que la configuration de la base de données H2 est correcte dans le fichier **application.properties.** Assurez-vous que les propriétés suivantes sont définies :
 
-```agsl
+```
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
@@ -37,15 +37,63 @@ spring.h2.console.enabled=true
 spring.h2.console.path=/h2-console
 ```
 
-### Guides
-The following guides illustrate how to use some features concretely:
+4- Compilez et construisez l'application en utilisant Maven
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+```agsl
+mvn clean install
+mvn package
+```
+
+5- Exécutez l'application Spring Boot.
+
+```agsl
+mvn spring-boot:run
+```
+
+L'application sera lancée sur http://localhost:8081
+
+6- Accédez à la console H2 pour vérifier et manipuler les données.
+
+Ouvrez votre navigateur et accédez à http://localhost:8081/h2-console. Utilisez les paramètres de connexion suivants :
+
+* JDBC URL: jdbc:h2:mem:testdb
+* User Name: sa
+* Password: (laissez le champ vide)
+
+Une fois connecté, vous pouvez exécuter des requêtes SQL et vérifier les données de la base de données.
+
+7- Testez les différents endpoints de l'API en utilisant un outil tel que Postman ou en accédant directement aux URL appropriées.
 
 
+* Recherche de films par genre :
+```curl
+GET http://localhost:8081/films?genre=Action
+```
+
+* Recherche de films par année et titre :
+```curl
+GET http://localhost:8081/films/search?year=2022&title=Star
+```
+
+* Obtention des détails d'un film par IMDb ID :
+
+```curl
+GET http://localhost:8081/films/tt3896198
+```
+
+```curl
+curl -H 'Content-Type: application/json' \
+      -d '{"title": "Test","year": 2014,"genre": "Test","type": "Test"}' \
+      -X POST \
+      http://localhost:8081/films
+```
+
+### Documentation swagger
+Accédez à la documentation swagger a travers le lien suivant
+```
+http://localhost:8081/swagger-ui/index.html
+localhost:8081/v3/api-docs
+```
 
 
 

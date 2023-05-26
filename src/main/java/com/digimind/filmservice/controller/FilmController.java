@@ -1,6 +1,8 @@
 package com.digimind.filmservice.controller;
 
 import com.digimind.filmservice.dto.AddFilmDto;
+import com.digimind.filmservice.dto.FilmDto;
+import com.digimind.filmservice.dto.FilmDtoDetails;
 import com.digimind.filmservice.dto.FilmDtoResponse;
 import com.digimind.filmservice.model.Film;
 import com.digimind.filmservice.service.FilmService;
@@ -32,7 +34,7 @@ public class FilmController {
     }
 
     @GetMapping("/films/{imdbID}")
-    public Film getFilmDetails(@PathVariable String imdbID) {
+    public FilmDtoDetails getFilmDetails(@PathVariable String imdbID) {
         return filmService.getFilmDetails(imdbID);
     }
 }

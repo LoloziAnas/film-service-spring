@@ -14,6 +14,7 @@ import org.testcontainers.containers.MariaDBContainer;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+
 class FilmServiceApplicationTests {
 
 	static MariaDBContainer mariaDBContainer = new MariaDBContainer("10.6");

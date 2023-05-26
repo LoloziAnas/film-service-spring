@@ -4,12 +4,15 @@ import com.digimind.filmservice.api.response.OmdbFilmResult;
 import com.digimind.filmservice.api.response.Search;
 import com.digimind.filmservice.dto.AddFilmDto;
 import com.digimind.filmservice.dto.FilmDto;
+import com.digimind.filmservice.dto.FilmDtoDetails;
 import com.digimind.filmservice.dto.FilmDtoResponse;
 import com.digimind.filmservice.model.Film;
 import com.digimind.filmservice.repository.FilmRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,26 +51,27 @@ public class FilmService {
         return new FilmDtoResponse(filmsDto, result.totalResults);
     }
 
-    public Film getFilmDetails(String imdbID) {
+    public FilmDtoDetails getFilmDetails(String imdbID) {
         OmdbFilmResult omdbFilmResult = omdbApiClient.getFilmDetails(imdbID);
         log.info(omdbFilmResult.title);
-        return Film.builder()
-                .title(omdbFilmResult.title)
-                .fYear(Integer.valueOf(omdbFilmResult.year))
-                .genre(omdbFilmResult.genre)
-                .build();
+        return mapOmdbFilmResultToFilmDtoDetails(omdbFilmResult);
     }
     private FilmDto convertFromOmdbFilmListResulSearchtToFilm (Search omdbFilmListResult){
-        return FilmDto.builder().title(omdbFilmListResult.title)
-                .year(Integer.valueOf(omdbFilmListResult.year))
+        return FilmDto.builder()
+                .title(omdbFilmListResult.title)
+                .year(omdbFilmListResult.year)
                 .type(omdbFilmListResult.type)
                 .build();
+    }
+    private FilmDtoDetails mapOmdbFilmResultToFilmDtoDetails(OmdbFilmResult omdbFilmResult){
+        ModelMapper mapper = new ModelMapper();
+        return mapper.map(omdbFilmResult, FilmDtoDetails.class);
     }
     private FilmDto mapFilmToFilmDto(Film film){
         return FilmDto.builder()
                 .title(film.getTitle())
                 .genre(film.getGenre())
-                .year(film.getFYear())
+                .year(String.valueOf(film.getFYear()))
                 .type(film.getType())
                 .build();
     }

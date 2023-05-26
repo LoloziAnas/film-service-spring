@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 public class FilmDto {
     private String title;
-    private Integer year;
+    private String year;
     private String genre;
     private String type;
 }
