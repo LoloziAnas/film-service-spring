@@ -1,7 +1,6 @@
 package com.digimind.filmservice.controller;
 
 import com.digimind.filmservice.dto.AddFilmDto;
-import com.digimind.filmservice.dto.FilmDto;
 import com.digimind.filmservice.dto.FilmDtoDetails;
 import com.digimind.filmservice.dto.FilmDtoResponse;
 import com.digimind.filmservice.model.Film;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = {"**","http://localhost:4200/","http://localhost:8080/"})
 public class FilmController {
     private final FilmService filmService;
 
