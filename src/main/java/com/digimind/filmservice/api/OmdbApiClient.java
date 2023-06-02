@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.LinkedList;
+
 @Component
 @Slf4j
 public class OmdbApiClient {
@@ -31,6 +33,7 @@ public class OmdbApiClient {
     public OmdbFilmResult getFilmDetails(String imdbID) {
         String url = String.format("http://www.omdbapi.com/?apikey=%s&i=%s", apiKey, imdbID);
         log.info("Url for getting details for a specific film "+url);
+
         return restTemplate.getForObject(url, OmdbFilmResult.class);
     }
 }

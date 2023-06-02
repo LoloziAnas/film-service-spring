@@ -15,11 +15,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class FilmService {
+public class FilmService implements FilmServiceI{
     private final FilmRepository filmRepository;
     private final OmdbApiClient omdbApiClient;
 
@@ -40,6 +41,9 @@ public class FilmService {
     }
     public FilmDtoResponse searchFilmsByGenre(String genre) {
         var filmList = filmRepository.findByGenreContainingIgnoreCase(genre);
+        Map<Integer, FilmDto> filmDtoMap = filmList.stream().collect(Collectors.toMap(Film::getId,this::mapFilmToFilmDto ));
+
+        log.info("search films by genre film map"+ filmDtoMap.keySet());
         var filmDtoList = filmList.stream().map(this::mapFilmToFilmDto).toList();
         return new FilmDtoResponse(filmDtoList, String.valueOf(filmList.size()));
     }

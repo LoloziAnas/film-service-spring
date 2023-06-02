@@ -21,6 +21,7 @@ public class FilmController {
     }
 
     @GetMapping("/films")
+
     public FilmDtoResponse searchFilmsByGenre(@RequestParam String genre) {
         return filmService.searchFilmsByGenre(genre);
     }
@@ -36,6 +37,12 @@ public class FilmController {
     @GetMapping("/films/{imdbID}")
     public FilmDtoDetails getFilmDetails(@PathVariable String imdbID) {
         return filmService.getFilmDetails(imdbID);
+    }
+
+    @DeleteMapping("/films/{id}")
+    public void deleteFilm(@PathVariable Long id){
+        filmService.deleteFilm(id);
+
     }
 }
 

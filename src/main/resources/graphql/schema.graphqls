@@ -1,0 +1,21 @@
+type Query{
+    allFilms: [Film],
+    filmById(id:Int): Film,
+}
+type Mutation{
+    saveFilm(filmRequest: FilmRequest):Film,
+    deleteFilm(id:Int):Film,
+}
+type Film{
+    id: Int,
+    title: String,
+    genre: String,
+    type: String,
+    fYear: Int
+}
+input FilmRequest{
+    title: String,
+    genre: String,
+    type: String,
+    fYear: Int
+}
