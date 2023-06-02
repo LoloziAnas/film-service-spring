@@ -20,7 +20,11 @@ public class FilmGraphQLController {
     private final FilmMapper filmMapper;
     @QueryMapping
     public List<Film> allFilms(){
-        return filmRepository.findByGenreContainingIgnoreCase("action");
+        return filmRepository.findAll();
+    }
+    @QueryMapping
+    public List<Film> getFilmsByGenre(@Argument String genre){
+        return filmRepository.findByGenreContainingIgnoreCase(genre);
     }
     @QueryMapping
     public Film filmById(@Argument Long id){

@@ -1,6 +1,7 @@
 type Query{
     allFilms: [Film],
     filmById(id:Int): Film,
+    getFilmsByGenre(genre:String):[Film]
 }
 type Mutation{
     saveFilm(filmRequest: FilmRequest):Film,
