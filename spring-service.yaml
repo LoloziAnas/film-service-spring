@@ -1,0 +1,12 @@
+appVersion: v1
+kind: Service
+metadata:
+  name: film-service-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+  selector:
+    app: film-service
+
+
